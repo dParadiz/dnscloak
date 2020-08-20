@@ -7,7 +7,7 @@
 # file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 FORCE=0
-VERBOSE=0
+VERBOSE=1
 CACHEOFF=0
 
 if [[ "$CORDOVA_CMDLINE" != "" ]]; then
@@ -87,11 +87,11 @@ go get golang.org/x/mobile/cmd/gomobile
 gomobile init
 
 # fetch vanilla dnscrypt-proxy
-go get -d 'github.com/jedisct1/dnscrypt-proxy'
+go get -d 'github.com/jedisct1/dnscrypt-proxy/dnscrypt-proxy'
 
 # add some mobile-specific flavor
 cd $PKGPATH
-git remote add dnscloak https://github.com/s-s/dnscrypt-proxy.git
+git remote add dnscloak https://github.com/dParadiz/dnscrypt-proxy.git
 git fetch dnscloak --quiet
 git checkout ios --quiet
 

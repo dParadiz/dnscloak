@@ -43,6 +43,10 @@ func initPluginsGlobals(pluginsGlobals *dnscrypt.PluginsGlobals, proxy *dnscrypt
 		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginBlockUndelegated)))
 	}
 
+	if len(proxy.GetCustomEdnsOptionsFile()) != 0 {
+		*queryPlugins = append(*queryPlugins, dnscrypt.Plugin(new(dnscrypt.PluginCustomEdnsOption)))
+	}
+
 	responsePlugins := &[]dnscrypt.Plugin{}
 	if len(proxy.GetNXLogFile()) != 0 {
 		*responsePlugins = append(*responsePlugins, dnscrypt.Plugin(new(dnscrypt.PluginNxLog)))
